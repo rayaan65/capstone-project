@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6200ea" />
+      <stop offset="100%" stop-color="#bb86fc" />
+    </linearGradient>
+    <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6200ea" />
+      <stop offset="100%" stop-color="#bb86fc" />
+    </linearGradient>
+  </defs>
+  <g>
+    <!-- Circuit board background -->
+    <rect x="5" y="10" width="40" height="30" rx="2" fill="#1e1e1e" stroke="url(#circuit-gradient)" stroke-width="1" />
+    
+    <!-- Circuit lines -->
+    <path d="M10,15 H20 V25 H30 V35 H40" stroke="url(#circuit-gradient)" stroke-width="1.5" fill="none" />
+    <path d="M10,25 H15 V30 H25 V20 H35 V30" stroke="url(#circuit-gradient)" stroke-width="1.5" fill="none" />
+    
+    <!-- Circuit nodes -->
+    <circle cx="10" cy="15" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="20" cy="15" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="20" cy="25" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="30" cy="25" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="30" cy="35" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="40" cy="35" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="10" cy="25" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="15" cy="25" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="15" cy="30" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="25" cy="30" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="25" cy="20" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="35" cy="20" r="1.5" fill="url(#logo-gradient)" />
+    <circle cx="35" cy="30" r="1.5" fill="url(#logo-gradient)" />
+    
+    <!-- Data visualization elements -->
+    <path d="M50,35 L50,15 L55,25 L60,20 L65,30 L70,15" stroke="url(#logo-gradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Pulse wave -->
+    <path d="M50,40 L55,40 L55,38 L60,38 L60,42 L65,42 L65,38 L70,38 L70,40 L75,40" stroke="url(#logo-gradient)" stroke-width="1.5" fill="none" />
+  </g>
+  <text x="85" y="33" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="bold" fill="url(#logo-gradient)">InsightFlow</text>
+</svg> 
