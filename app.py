@@ -12,6 +12,8 @@ import uuid
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
 
+# Import seaborn at the top level to avoid try/except inside the function
+import seaborn as sns
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -205,34 +207,25 @@ def analyze():
         corr_matrix = numeric_df.corr().to_dict()
         
         # Create correlation heatmap using seaborn for better visualization
-        try:
-            import seaborn as sns
-            plt.figure(figsize=(10, 8))
-            
-            # Create a mask for the upper triangle to show only lower triangle
-            mask = np.triu(np.ones_like(numeric_df.corr(), dtype=bool))
-            
-            # Generate heatmap with seaborn
-            sns.heatmap(
-                numeric_df.corr(),
-                mask=mask,
-                annot=True,
-                fmt=".2f",
-                cmap="coolwarm",
-                square=True,
-                linewidths=0.5,
-                cbar_kws={"shrink": 0.8}
-            )
-            
-            plt.title("Correlation Matrix", fontsize=14, pad=20)
-            plt.tight_layout()
-        except ImportError:
-            # Fallback to matplotlib if seaborn is not available
-            plt.figure(figsize=(10, 8))
-            plt.matshow(numeric_df.corr(), fignum=1)
-            plt.colorbar()
-            plt.xticks(range(len(numeric_df.columns)), numeric_df.columns, rotation=90)
-            plt.yticks(range(len(numeric_df.columns)), numeric_df.columns)
+        plt.figure(figsize=(10, 8))
+        
+        # Create a mask for the upper triangle to show only lower triangle
+        mask = np.triu(np.ones_like(numeric_df.corr(), dtype=bool))
+        
+        # Generate heatmap with seaborn
+        sns.heatmap(
+            numeric_df.corr(),
+            mask=mask,
+            annot=True,
+            fmt=".2f",
+            cmap="coolwarm",
+            square=True,
+            linewidths=0.5,
+            cbar_kws={"shrink": 0.8}
+        )
+        
+        plt.title("Correlation Matrix", fontsize=14, pad=20)
+        plt.tight_layout()
         
         # Save plot to a temporary file
         img_path = os.path.join(app.config['STATIC_FOLDER'], 'images', f"{session_id}_correlation.png")
@@ -369,4 +362,8 @@ def analyze():
     return jsonify({'error': 'Invalid analysis type'})
 
 if __name__ == '__main__':
+    print("InsightFlow Data Analysis Tool")
+    print("------------------------------")
+    print("Server running at: http://localhost:8080")
+    print("Press CTRL+C to quit")
     app.run(host='0.0.0.0', port=8080, debug=True)
